@@ -41,20 +41,8 @@ public class SpriteSheet {
         this.actualFrame = 0;
     }
 
-    public int getActualRow() {
-        return actualRow;
-    }
-
     public Bitmap getBitmap() {
         return bitmap;
-    }
-
-    public int getFrameCount() {
-        return frameCount;
-    }
-
-    public Rect getRect() {
-        return rect;
     }
 
     public int nextFrame(){
@@ -68,8 +56,12 @@ public class SpriteSheet {
         return  actualFrame;
     }
 
-    public int getActualFrame() {
-        return actualFrame;
+    public Rect getSrc() {
+        return new Rect(rect.right * actualFrame, actualRow * rect.bottom, rect.right, rect.bottom);
+    }
+
+    public Rect getDst(){
+        return new Rect(posX,posY,rect.right,rect.bottom);
     }
 }
 

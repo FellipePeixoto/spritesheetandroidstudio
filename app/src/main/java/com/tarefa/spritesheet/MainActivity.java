@@ -22,20 +22,30 @@ public class MainActivity extends AppCompatActivity {
 
 
         SpriteSheet charac = new SpriteSheet(
-            BitmapFactory.decodeResource(getResources(),R.drawable.charac),
-            new int[] {4, 4, 4, 4},
-            0,
-            new Rect(0,0,256,192)
+                BitmapFactory.decodeResource(getResources(),R.drawable.charac),
+                new int[] {4, 4, 4, 4},
+                0,
+                new Rect(0,0,256,192)
         );
 
         charac.posX = 100;
         charac.posY = 100;
 
+        SpriteSheet charac2 = new SpriteSheet(
+                BitmapFactory.decodeResource(getResources(),R.drawable.charac2),
+                new int[] {8, 8},
+                0,
+                new Rect(0,0,108,140)
+        );
+
+        charac2.posX = 100;
+        charac2.posY = 120;
+
         displayMetrics = new DisplayMetrics();
 
         getWindow().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        drawView = new DrawView(this, displayMetrics.widthPixels, displayMetrics.heightPixels, new SpriteSheet[] {charac});
+        drawView = new DrawView(this, displayMetrics.widthPixels, displayMetrics.heightPixels, new SpriteSheet[] {charac2});
 
         setContentView(drawView);
     }

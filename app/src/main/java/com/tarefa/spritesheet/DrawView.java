@@ -84,8 +84,10 @@ public class DrawView extends SurfaceView implements Runnable {
 
         Canvas canvas = surfaceHolder.lockCanvas();
 
-        if (spriteSheets == null)
+        if (spriteSheets == null){
+            surfaceHolder.unlockCanvasAndPost(canvas);
             return;
+        }
 
         canvas.drawColor(Color.WHITE);
 
@@ -93,22 +95,12 @@ public class DrawView extends SurfaceView implements Runnable {
 
                 SpriteSheet s = spriteSheets[i];
 
-                Rect src = new Rect(
-                        s.getRect().right * s.getActualFrame(),
-                        s.getActualRow() * s.getRect().bottom,
-                        s.getRect().right,
-                        s.getRect().bottom);
-
-                Rect dst = new Rect(
-                        s.posX,
-                        s.posY,
-                        s.getRect().right,
-                        s.getRect().bottom
-                );
+                Rect tA = new Rect(s.getSrc());
+                Rect tB = new Rect(s.getDst());
 
                 canvas.drawBitmap(s.getBitmap(),
-                        src,
-                        dst,
+                        tA,
+                        tB,
                         null
                 );
 
