@@ -18,6 +18,8 @@ public class SpriteSheet {
     {
         this.bitmap = bitmap;
         this.frameCountByRow = frameCountByRow;
+        rect.right = rect.right * 2;
+        rect.bottom = rect.bottom * 2;
         this.rect = rect;
         this.actualRow = 0;
         this.actualFrame = 0;
@@ -26,6 +28,8 @@ public class SpriteSheet {
     public SpriteSheet(Bitmap bitmap, int[] frameCountByRow, int defaultAnimation, Rect rect){
         this.bitmap = bitmap;
         this.frameCountByRow = frameCountByRow;
+        rect.right = rect.right * 2;
+        rect.bottom = rect.bottom * 2;
         this.rect = rect;
         this.actualRow = defaultAnimation;
         this.frameCount = this.frameCountByRow[this.actualRow];
@@ -57,11 +61,18 @@ public class SpriteSheet {
     }
 
     public Rect getSrc() {
-        return new Rect(rect.right * actualFrame, actualRow * rect.bottom, rect.right, rect.bottom);
+        return new Rect(
+                rect.right * actualFrame,
+                actualRow * rect.bottom,
+                rect.right * actualFrame  + (rect.right),
+                actualRow * rect.bottom + (rect.bottom));
     }
 
     public Rect getDst(){
-        return new Rect(posX,posY,rect.right,rect.bottom);
+        return new Rect(
+                posX,
+                posY,
+                posX + rect.right,
+                posY + rect.bottom);
     }
 }
-

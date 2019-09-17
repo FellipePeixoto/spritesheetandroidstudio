@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        drawView = new DrawView(this, displayMetrics.widthPixels, displayMetrics.heightPixels, new SpriteSheet[] {charac2});
+        drawView = new DrawView(this, displayMetrics.widthPixels, displayMetrics.heightPixels, new SpriteSheet[] {charac, charac2});
 
         setContentView(drawView);
     }
